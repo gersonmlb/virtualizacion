@@ -3,12 +3,6 @@
 from flask_testing import TestCase
 from project import app, db
 
-class BaseConfig:
-    """Configuracion base"""
-    TESTING = False
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = 'my_precious'  # new
-
 class BaseTestCase(TestCase):
     def create_app(self):
         app.config.from_object('project.config.TestingConfig')
@@ -22,3 +16,8 @@ class BaseTestCase(TestCase):
         db.session.remove()
         db.drop_all()
 
+class BaseConfig:
+    """Configuracion base"""
+    TESTING = False
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = 'my_key'  # new

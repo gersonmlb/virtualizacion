@@ -1,5 +1,4 @@
 # services/users/project/__init__.py
-
 import os  # nuevo
 from flask import Flask, jsonify
 from flask_restful import Resource, Api
@@ -11,7 +10,7 @@ app = Flask(__name__)
 api = Api(app)
 
 #establecer configuración
-#app.config.from_object("project.config.DevelopmentConfig")  # nuevo
+# app.config.from_object("project.config.DevelopmentConfig")  # nuevo
 app_settings = os.getenv("APP_SETTINGS")  # nuevo
 app.config.from_object(app_settings)  # nuevo
 
@@ -30,10 +29,9 @@ class User(db.Model):  # nuevo
         self.username = username
         self.email = email
 
-
 class UsersPing(Resource):
     def get(self):
-        return {"status": "success", "menssage": "pong!"}
+        return {"status": "success", "message": "pong!"}
 
 
 api.add_resource(UsersPing, "/users/ping")
